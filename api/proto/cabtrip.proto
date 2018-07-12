@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/api/annotations.proto";
+import "proto/tripdata.proto";
+
+option go_package = "github.com/govinda-attal/cabride-api/pkg/rides/pb";
+
+service CabTrips {
+    rpc Fetch(FetchRq) returns (FetchRs) {
+        option (google.api.http) = {
+            post: "/v1/trips/fetch/{pickup}"
+            body: "*"
+        };
+    }
+    rpc ClearCache(ClearCacheRq) returns (ClearCacheRs) {
+        option (google.api.http) = {
+            delete: "/v1/cache/clear"
+        };
+    }
+}
+
+message FetchRq {
+    string pickup = 1;
+    repeated string medallions = 2;    
+}
+
+message FetchRs {
+    string pickup = 1;    
+    repeated proto.TripData trips = 2;    
+}
+
+message ClearCacheRq {
+    string pickup = 1;    
+}
+
+message ClearCacheRs {
+        
+}

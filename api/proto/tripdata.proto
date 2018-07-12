@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/govinda-attal/cabride-api/pkg/rides/pb";
+
+message TripData {
+    string medallion = 1;
+    string hackLicense = 2;
+    string vendorID = 3;
+    int32 rateCode = 4;
+    string storeFwdFlag = 5;
+    google.protobuf.Timestamp pickup = 6;
+    google.protobuf.Timestamp dropoff = 7;
+    int32 passengerCount = 8;
+    int64 tripTime = 9;
+    double tripDistance = 10;    
+}

@@ -1,0 +1,149 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/cabtrip.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/cache/clear": {
+      "delete": {
+        "operationId": "ClearCache",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/protoClearCacheRs"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pickup",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CabTrips"
+        ]
+      }
+    },
+    "/v1/trips/fetch/{pickup}": {
+      "post": {
+        "operationId": "Fetch",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/protoFetchRs"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pickup",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/protoFetchRq"
+            }
+          }
+        ],
+        "tags": [
+          "CabTrips"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protoClearCacheRs": {
+      "type": "object"
+    },
+    "protoFetchRq": {
+      "type": "object",
+      "properties": {
+        "pickup": {
+          "type": "string"
+        },
+        "medallions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "protoFetchRs": {
+      "type": "object",
+      "properties": {
+        "pickup": {
+          "type": "string"
+        },
+        "trips": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protoTripData"
+          }
+        }
+      }
+    },
+    "protoTripData": {
+      "type": "object",
+      "properties": {
+        "medallion": {
+          "type": "string"
+        },
+        "hackLicense": {
+          "type": "string"
+        },
+        "vendorID": {
+          "type": "string"
+        },
+        "rateCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "storeFwdFlag": {
+          "type": "string"
+        },
+        "pickup": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dropoff": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "passengerCount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "tripTime": {
+          "type": "string",
+          "format": "int64"
+        },
+        "tripDistance": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    }
+  }
+}
