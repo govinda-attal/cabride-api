@@ -37,7 +37,7 @@ The second endpoint DELETE /v1/cache/clear?pickup=2013-12-01 clears entries with
 3. MySQL Database holds data for the NY trips
 4. Redis is used to Cache trips data
 
-* Note: Preferrably protobug release 3.6.0 is installed on your machine on your OS: https://github.com/google/protobuf/releases 
+* Note: Preferrably protobuf release 3.6.0 is installed on your machine on your OS: https://github.com/google/protobuf/releases 
 
 ## Getting Started
 
