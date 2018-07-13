@@ -17,7 +17,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"medallions\": [\n    \"D7D598CD99978BD012A87A76A7C891B7\"\n  ]\n}"
+					"raw": "{\n  \"medallions\": [\n    \"D7D598CD99978BD012A87A76A7C891B7\"\n  ],\n  \"noCache\": true\n}"
 				},
 				"url": {
 					"raw": "http://localhost:9080/v1/trips/fetch/2013-12-01",

@@ -23,7 +23,8 @@ service CabTrips {
 
 message FetchRq {
     string pickup = 1;
-    repeated string medallions = 2;    
+    repeated string medallions = 2;
+    bool noCache = 3;    
 }
 
 message FetchRs {

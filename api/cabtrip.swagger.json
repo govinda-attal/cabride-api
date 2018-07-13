@@ -87,6 +87,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "noCache": {
+          "type": "boolean",
+          "format": "boolean"
         }
       }
     },

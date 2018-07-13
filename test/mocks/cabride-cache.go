@@ -14,8 +14,9 @@ type CabrideMockCache struct {
 			PickupDate time.Time
 		}
 		Returns struct {
-			TripsData []*pb.TripData
-			Error     error
+			TripsData          []*pb.TripData
+			NotFoundMedallions []string
+			Error              error
 		}
 	}
 
@@ -48,10 +49,12 @@ type CabrideMockCache struct {
 }
 
 // Fetch Mock.
-func (cm *CabrideMockCache) Fetch(medallions []string, d time.Time) ([]*pb.TripData, error) {
+func (cm *CabrideMockCache) Fetch(medallions []string, d time.Time) ([]*pb.TripData, []string, error) {
 	cm.FetchCall.Receives.Medallions = medallions
 	cm.FetchCall.Receives.PickupDate = d
-	return cm.FetchCall.Returns.TripsData, cm.FetchCall.Returns.Error
+	return cm.FetchCall.Returns.TripsData,
+		cm.FetchCall.Returns.NotFoundMedallions,
+		cm.FetchCall.Returns.Error
 }
 
 // Cache Mock.
