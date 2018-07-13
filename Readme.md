@@ -117,7 +117,7 @@ make local-serve # This will build the Microservice and run it locally and the A
 ```
 
 ### Import NY Cab Rides Data in DB
-Using Adminer UI import data in MYSQL DB from ./migrations/ny_cab_data_cab_trip_data_full.sql
+Using Adminer :earth_asia: http://localhost:8080 UI import data in MYSQL DB from ./migrations/ny_cab_data_cab_trip_data_full.sql. Login as 'root' with password as 'root'
 
 ### Postman Test Collection
 
