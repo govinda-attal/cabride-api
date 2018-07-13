@@ -65,6 +65,6 @@ upload:
 	docker push gattal/$(APP_NAME):$(TAG)	
 
 run:
-	docker run --name cabride-api -d -p $(HOST_PORT):9080 gattal/$(APP_NAME):$(TAG) sh -c "sleep 15s && ./cabride serve --config ./test/fixtures/app-config-local.yaml"
+	docker run --name cabride-api -d -v ./test/fixtures:/app/config -p $(HOST_PORT):9080 gattal/$(APP_NAME):$(TAG) sh -c "sleep 5s && ./cabride serve --config ./config/app-config-local.yaml"
 
 ship: init test pack upload clean	

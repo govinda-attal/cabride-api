@@ -9,9 +9,7 @@ Cab trips in NY are public available as csv downloadable files. In order to make
 Data format is as follow:
 medallion, hack_license, vendor_id, rate_code, store_and_fwd_flag, pickup_datetime, dropoff_datetime, passenger_count, trip_time_in_secs, trip_distance
 
-1. The medallion is the cab identification.
-2. API should provide a way to query how many trips a particular cab (medallion) has made given a particular pickup date ( using pickup_datetime and only considering the date part)
-3. The API must receive one or more medallions and return how many trips each medallion has made.
+The medallion is the cab identification. API should provide a way to query how many trips a particular cab (medallion) has made given a particular pickup date ( using pickup_datetime and only considering the date part). The API must receive one or more medallions and return how many trips each medallion has made.
 
  
 Considering that the query creates a heavy load on the database, the results must be cached. The API must allow user to ask for fresh data, ignoring the cache. There must be also be a method to clear the cache.
@@ -25,7 +23,8 @@ The first endpoint, POST /v1/trips/fetch/2006-01-02 handles receipt of list of m
 {
   "medallions": [
     "D7D598CD99978BD012A87A76A7C891B7"
-  ]
+  ],
+  "noCache": true
 }
 ```
 
@@ -92,6 +91,8 @@ make test # This will run execute unit tests with ginkgo -r command
 ### Integration tests
 
 This microservice meets given requirements with Golang and MySQL Database as backend and Redis for cache. To keep this foot-print of this application minimum mysql db & cache will execute within a docker container. Where as following backend microservice can be hosted within a docker container or local OS.
+
+* Note: dep ensure step in the Dockerfile is getting 28 dependencies for the project. So it will take sometime to complete while building docker image. If it is not worth that wait then comment cabride service section within docker-compose file and run the application locally.
 
 #### Option A: Docker Compose - orchestrate DB and Microservice as docker containers (Preferred) :heavy_check_mark:
 * Note: For some reason Microservice container port 9080 though nicely mapped to HOST OS - it is not accessible. So Use Option B.

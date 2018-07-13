@@ -37,6 +37,7 @@ services:
       - redis
     ports: 
       - 9080:9080
+      - 10000:10000
     networks:
       - default
     command: sh -c "sleep 10s && ./cabride serve"

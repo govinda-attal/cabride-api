@@ -1,5 +1,6 @@
 debug*
 /vendor
+/_vendor*
 /dist
 /config/crypto-config
 /test/fixtures/pgdata

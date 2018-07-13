@@ -7,7 +7,7 @@ RUN go get -u github.com/golang/dep/cmd/dep
     
 COPY . /go/src/github.com/govinda-attal/cabride-api
 WORKDIR /go/src/github.com/govinda-attal/cabride-api
-RUN dep ensure && go build -o $APP_NAME
+RUN dep ensure -v && go build -o $APP_NAME
 
 # final stage
 FROM alpine:3.7
@@ -18,7 +18,7 @@ COPY --from=build-env /go/src/github.com/govinda-attal/cabride-api/$APP_NAME /ap
 COPY --from=build-env /go/src/github.com/govinda-attal/cabride-api/config/app-config.yaml /app/config/app-config.yaml
 
 VOLUME [ "/app/config" ]
-EXPOSE 9080
+EXPOSE 9080 10000
 
 # ENTRYPOINT ./cabride serve
 

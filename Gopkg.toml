@@ -26,6 +26,10 @@
 
 
 [[constraint]]
+  name = "github.com/go-ozzo/ozzo-validation"
+  version = "3.4.0"
+
+[[constraint]]
   name = "github.com/go-sql-driver/mysql"
   version = "1.4.0"
 
@@ -44,6 +48,18 @@
 [[constraint]]
   branch = "master"
   name = "github.com/jmoiron/sqlx"
+
+[[constraint]]
+  name = "github.com/onsi/ginkgo"
+  version = "1.5.0"
+
+[[constraint]]
+  name = "github.com/onsi/gomega"
+  version = "1.4.0"
+
+[[constraint]]
+  name = "github.com/rs/cors"
+  version = "1.4.0"
 
 [[constraint]]
   name = "github.com/spf13/cobra"
