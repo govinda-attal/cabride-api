@@ -56,7 +56,6 @@ func (ct *CabTrips) Fetch(ctx context.Context, rq *pb.FetchRq) (*pb.FetchRs, err
 
 	if len(trips) > 0 { // Only when new entries fetched from database, cache them.
 		// There is no need for API consumer to wait for entries to be cached.
-		log.Println("DB Results")
 		go func(trips []*pb.TripData, d time.Time) {
 			ct.crCache.Cache(trips, pickup)
 		}(trips, pickup)
